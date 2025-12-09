@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Centre de répartition – Ligue Métropolitaine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- bootstrap (node_modules) -->
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+
+    <!-- icônes Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
+    />
+
+    <!-- CSS MapLibre -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@5.13.0/dist/maplibre-gl.css"
+    />
+
+    <!-- styles  -->
+    <link rel="stylesheet" href="./src/css/styles.css" />
+  </head>
+  <body>
+    <div class="hud-grid container-fluid">
+      <!-- header -->
+      <header class="panel panel--header">
+        <div class="hud-header-inner">
+          <!-- texte gauche -->
+          <div class="hud-header-text">
+            <h1 class="hud-title mb-0">Centre de répartition – Ligue Métropolitaine</h1>
+            <p class="hud-subtitle mb-0">
+              Interface de gestion des super-héros
+            </p>
+          </div>
+
+          <!-- logo centre -->
+          <div class="hud-header-logo">
+            <canvas id="hudLogo" width="200" height="80"></canvas>
+          </div>
+
+          <!-- droite horloge et bouton -->
+          <div class="hud-header-actions d-flex align-items-center gap-3 justify-content-end">
+            <span class="hud-clock" id="hudClock">00:00:00</span>
+            <button class="btn btn-outline-danger btn-sm" id="alertModeBtn">
+              <i class="bi bi-broadcast-pin me-1"></i>
+              Mode alerte
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- liste heros -->
+      <section class="panel panel--heroes">
+        <h2 class="panel-title">Héros</h2>
+        <div id="heroesList" class="heroes-list">
+        </div>
+      </section>
+
+      <!-- carte -->
+      <section class="panel panel--map">
+        <h2 class="panel-title">Carte de la ville</h2>
+        <div id="map" class="map-panel"></div>
+      </section>
+
+      <!-- détails héros -->
+      <section class="panel panel--details">
+        <h2 class="panel-title">Détails du héros sélectionné</h2>
+        <div id="heroDetails" class="hero-details">
+          <p class="placeholder-text">
+            Sélectionnez un héros dans la liste pour afficher ses informations détaillées.
+          </p>
+        </div>
+      </section>
+
+      <!-- graphiques stats -->
+      <section class="panel panel--stats">
+        <h2 class="panel-title">Statistiques globales</h2>
+        <div class="stats-charts">
+          <canvas id="incidentsChart"></canvas>
+          <canvas id="resolutionChart"></canvas>
+        </div>
+      </section>
+
+      <!-- alertes -->
+      <section class="panel panel--alerts">
+        <h2 class="panel-title">Alertes</h2>
+        <ul class="placeholder-list" id="alertsList">
+          <li>En attente de données… (placeholder)</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- importmap -->
+    <script type="importmap">
+    {
+      "imports": {
+        "animejs": "./node_modules/animejs/lib/anime.es.js",
+        "@kurkle/color": "./node_modules/@kurkle/color/dist/color.esm.js",
+        "chart.js/auto": "./node_modules/chart.js/auto/auto.js",
+        "maplibre-gl": "https://esm.sh/maplibre-gl@5.13.0",
+        "tone.js": "https://esm.sh/tone@15.1.22",
+        "zzz": "https://esm.sh/zdog"
+      }
+    }
+    </script>
+
+    <!-- lib -->
+    <script src="./node_modules/tone/build/Tone.js"></script>
+    <script src="./node_modules/zdog/dist/zdog.dist.min.js"></script>
+
+    <!-- modules -->
+    <script src="./src/js/animejs.js" type="module"></script>
+    <script src="./src/js/chartjs.js" type="module"></script>
+    <script src="./src/js/bootstrap.js" defer></script>
+    <script src="./src/js/map.js" type="module"></script>
+    <script src="./src/js/zdog.js" type="module"></script>
+    <script src="./src/js/main.js" type="module"></script>
+  </body>
+</html>
